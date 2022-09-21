@@ -22,7 +22,7 @@ struct AddTodoView: View {
     @State private var errorMessage : String = ""
     
     //MARK: - FUNCTION
-    private func addItem() {
+    func addItem() {
         withAnimation {
             if self.name != "" {
                 let todo = Item(context: viewContext)

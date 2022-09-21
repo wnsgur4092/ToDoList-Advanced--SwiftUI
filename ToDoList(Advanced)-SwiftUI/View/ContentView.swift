@@ -22,23 +22,9 @@ struct ContentView: View {
     
     //MARK: - FUNCTION
     private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-                
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-            
             self.showingAddTodoView.toggle()
-
         }
-    }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -56,13 +42,17 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
-                        Text(item.name ?? "")
+                ForEach(self.items, id: \.self) { item in
+                    HStack {
+                        Text(item.name ?? "Unknown")
+                        Spacer()
+                        Text(item.priority ?? "Unknown")
+                    }
                 }
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
                 ToolbarItem {
