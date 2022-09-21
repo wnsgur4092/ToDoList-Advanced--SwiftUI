@@ -41,30 +41,36 @@ struct ContentView: View {
     //MARK: - BODY
     var body: some View {
         NavigationView {
-            List {
-                ForEach(self.items, id: \.self) { item in
-                    HStack {
-                        Text(item.name ?? "Unknown")
-                        Spacer()
-                        Text(item.priority ?? "Unknown")
+            ZStack {
+                List {
+                    ForEach(self.items, id: \.self) { item in
+                        HStack {
+                            Text(item.name ?? "Unknown")
+                            Spacer()
+                            Text(item.priority ?? "Unknown")
+                        }
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    .onDelete(perform: deleteItems)
+                } //: LIST
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
                     }
-                    .sheet(isPresented: $showingAddTodoView) {
-                        AddTodoView()
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }
+                        .sheet(isPresented: $showingAddTodoView) {
+                            AddTodoView()
+                        }
                     }
+                } //: TOOLBAR
+                //MARK: - NO TODO ITEMS
+                if items.count == 0 {
+                    EmptyListView()
                 }
-            }
-            Text("Select an item")
+            } //: ZSTACK
+            
         }
     }
 
