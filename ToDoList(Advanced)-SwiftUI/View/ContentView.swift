@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     //MARK: - PROPERTIES
     @State private var showingAddTodoView : Bool = false
+    @State private var animatingButton : Bool = false
     
     //MARK: - FECTHING DATA
     @Environment(\.managedObjectContext) private var viewContext
@@ -70,6 +71,41 @@ struct ContentView: View {
                     EmptyListView()
                 }
             } //: ZSTACK
+            //MARK: - ADD BUTTON
+            .overlay(
+                ZStack{
+                    Group{
+                        Circle()
+                            .fill(Color.blue)
+                            .opacity(self.animatingButton ? 0.2 : 0.1)
+                            .scaleEffect(self.animatingButton ? 1 : 0.1)
+                            .frame(width: 68, height: 68, alignment: .center)
+                        Circle()
+                            .fill(Color.blue)
+                            .opacity(self.animatingButton ? 0.15 : 0.1)
+                            .scaleEffect(self.animatingButton ? 1 : 0.1)
+                            .frame(width: 88, height: 88, alignment: .center)
+                    }
+                    .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true),value: animatingButton)
+                    
+                    Button(action: {
+                        self.showingAddTodoView.toggle()
+                    }, label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .background(Circle().fill(Color("ColorBase")))
+                            .frame(width: 48, height: 48, alignment: .center)
+                    }) //: BUTTON
+                    .onAppear {
+                        self.animatingButton.toggle()
+                    }
+                } //: ZSTACK
+                    .padding(.bottom, 15)
+                    .padding(.trailing, 15)
+                ,alignment: .bottomTrailing
+                    
+            )
             
         }
     }
