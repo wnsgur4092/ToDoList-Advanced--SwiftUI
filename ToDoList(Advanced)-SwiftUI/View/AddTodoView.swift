@@ -51,7 +51,7 @@ struct AddTodoView: View {
     var body: some View {
         NavigationView {
             Form {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 20) {
                     //MARK: - TODO NAME
                     TextField("Todo", text: $name)
                         .padding()
@@ -81,9 +81,11 @@ struct AddTodoView: View {
                     } //: SAVE BUTTON
                     
                 } //: VSTACK
+
                 
                 
             } //: Form
+
             .navigationTitle("New Todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

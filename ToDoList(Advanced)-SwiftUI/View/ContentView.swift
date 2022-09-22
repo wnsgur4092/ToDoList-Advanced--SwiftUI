@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var showingSettingsView : Bool = false
     //MARK: - FECTHING DATA
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -23,20 +23,33 @@ struct ContentView: View {
     
     //MARK: - FUNCTION
     private func addItem() {
-            self.showingAddTodoView.toggle()
-        }
+        self.showingAddTodoView.toggle()
+    }
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
-
+                
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+    
+    private func colorize (priority : String) -> Color {
+        switch priority {
+        case "High":
+            return .pink
+        case "Normal" :
+            return .green
+        case "Low" :
+            return .blue
+        default:
+            return .gray
         }
     }
     //MARK: - BODY
@@ -46,10 +59,22 @@ struct ContentView: View {
                 List {
                     ForEach(self.items, id: \.self) { item in
                         HStack {
+                            Circle()
+                                .frame(width: 12, height: 12, alignment: .center)
+                                .foregroundColor(self.colorize(priority: item.priority ?? "Normal"))
                             Text(item.name ?? "Unknown")
+                                .fontWeight(.semibold)
+                            
                             Spacer()
+                            
                             Text(item.priority ?? "Unknown")
-                        }
+                                .font(.footnote)
+                                .foregroundColor(Color(UIColor.systemGray2))
+                                .padding(3)
+                                .frame(minWidth: 62)
+                                .overlay(Capsule().stroke(Color(UIColor.systemGray2), lineWidth: 2))
+                        } //: HSTACK
+                        .padding(.vertical)
                     }
                     .onDelete(perform: deleteItems)
                 } //: LIST
