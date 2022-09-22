@@ -54,7 +54,7 @@ struct ContentView: View {
     }
     //MARK: - BODY
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 List {
                     ForEach(self.items, id: \.self) { item in
@@ -141,8 +141,11 @@ struct ContentView: View {
             )
             
         }
-    }
+        
 
+
+    }
+    
 
 }
 

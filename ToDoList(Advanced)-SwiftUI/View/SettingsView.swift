@@ -13,7 +13,7 @@ struct SettingsView: View {
     
     //MARK: - BODY
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .center, spacing: 0) {
                 //MARK: - FORM
                 Form{
@@ -62,6 +62,7 @@ struct SettingsView: View {
             .background(Color("ColorBackground").edgesIgnoringSafeArea(.all))
             
         } //: NAVIGATION
+    
     }
 }
 

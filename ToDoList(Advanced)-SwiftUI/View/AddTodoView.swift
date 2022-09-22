@@ -49,7 +49,7 @@ struct AddTodoView: View {
     
     //MARK: - BODY
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 VStack(alignment: .leading, spacing: 20) {
                     //MARK: - TODO NAME
@@ -100,6 +100,7 @@ struct AddTodoView: View {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
         } //: NAVIGATION
+
     }
 }
 
