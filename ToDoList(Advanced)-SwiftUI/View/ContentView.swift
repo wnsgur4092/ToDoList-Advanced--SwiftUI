@@ -12,7 +12,7 @@ struct ContentView: View {
     //MARK: - PROPERTIES
     @State private var showingAddTodoView : Bool = false
     @State private var animatingButton : Bool = false
-    
+    @State private var showingSettingsView : Bool = false
     //MARK: - FECTHING DATA
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -58,12 +58,17 @@ struct ContentView: View {
                         EditButton()
                     }
                     ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
+                        Button {
+                            self.showingSettingsView.toggle()
+                        } label: {
+                            Image(systemName: "paintbrush")
                         }
-                        .sheet(isPresented: $showingAddTodoView) {
-                            AddTodoView()
+                        .sheet(isPresented: $showingSettingsView) {
+                            SettingsView()
                         }
+
+                            
+                        
                     }
                 } //: TOOLBAR
                 //MARK: - NO TODO ITEMS
@@ -99,6 +104,9 @@ struct ContentView: View {
                     }) //: BUTTON
                     .onAppear {
                         self.animatingButton.toggle()
+                    }
+                    .sheet(isPresented: $showingAddTodoView) {
+                        AddTodoView()
                     }
                 } //: ZSTACK
                     .padding(.bottom, 15)

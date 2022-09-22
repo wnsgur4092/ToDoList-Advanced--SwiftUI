@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF544E2C28DC795900B1C08D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF544E2B28DC795900B1C08D /* SettingsView.swift */; };
+		BF544E2E28DC7B3200B1C08D /* FormRowStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF544E2D28DC7B3200B1C08D /* FormRowStaticView.swift */; };
+		BF544E3028DC7E6B00B1C08D /* FormRowLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF544E2F28DC7E6B00B1C08D /* FormRowLinkView.swift */; };
 		BF614DBD28DB515000D4212D /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF614DBC28DB515000D4212D /* EmptyListView.swift */; };
 		BFCC312528D9B68000375A68 /* ToDoList_Advanced__SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC312428D9B68000375A68 /* ToDoList_Advanced__SwiftUIApp.swift */; };
 		BFCC312728D9B68000375A68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC312628D9B68000375A68 /* ContentView.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF544E2B28DC795900B1C08D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BF544E2D28DC7B3200B1C08D /* FormRowStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowStaticView.swift; sourceTree = "<group>"; };
+		BF544E2F28DC7E6B00B1C08D /* FormRowLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowLinkView.swift; sourceTree = "<group>"; };
 		BF614DBB28DB4E3700D4212D /* ToDoList-Advanced--SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ToDoList-Advanced--SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BF614DBC28DB515000D4212D /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		BFCC312128D9B68000375A68 /* ToDoList(Advanced)-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDoList(Advanced)-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +103,9 @@
 				BFCC312628D9B68000375A68 /* ContentView.swift */,
 				BFCC313B28D9B97E00375A68 /* AddTodoView.swift */,
 				BF614DBC28DB515000D4212D /* EmptyListView.swift */,
+				BF544E2B28DC795900B1C08D /* SettingsView.swift */,
+				BF544E2D28DC7B3200B1C08D /* FormRowStaticView.swift */,
+				BF544E2F28DC7E6B00B1C08D /* FormRowLinkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,8 +181,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCC312E28D9B68100375A68 /* Persistence.swift in Sources */,
+				BF544E2C28DC795900B1C08D /* SettingsView.swift in Sources */,
 				BFCC312728D9B68000375A68 /* ContentView.swift in Sources */,
 				BF614DBD28DB515000D4212D /* EmptyListView.swift in Sources */,
+				BF544E2E28DC7B3200B1C08D /* FormRowStaticView.swift in Sources */,
+				BF544E3028DC7E6B00B1C08D /* FormRowLinkView.swift in Sources */,
 				BFCC313C28D9B97E00375A68 /* AddTodoView.swift in Sources */,
 				BFCC313828D9B7D900375A68 /* Constant.swift in Sources */,
 				BFCC312528D9B68000375A68 /* ToDoList_Advanced__SwiftUIApp.swift in Sources */,
